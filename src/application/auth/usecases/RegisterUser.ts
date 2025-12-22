@@ -1,11 +1,11 @@
 import { randomUUID } from "crypto";
 
-import { User } from "@/src/domain/entities/User";
-import { Email } from "@/src/domain/value-objects/Email";
-import { HashedPassword } from "@/src/domain/value-objects/HashedPassword";
-import { Password } from "@/src/domain/value-objects/Password";
-import { IUserRepository } from "../ports/IUserRepository";
-import { PasswordHasher } from "../ports/PasswordHasher";
+import { IUserRepository } from "@application/auth/ports/IUserRepository";
+import { PasswordHasher } from "@application/auth/ports/PasswordHasher";
+import { User } from "@domain/entities/User";
+import { Email } from "@domain/value-objects/Email";
+import { HashedPassword } from "@domain/value-objects/HashedPassword";
+import { Password } from "@domain/value-objects/Password";
 
 export class RegisterUseCase {
   constructor(

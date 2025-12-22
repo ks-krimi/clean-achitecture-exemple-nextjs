@@ -1,14 +1,14 @@
 import { AwilixContainer, asClass } from "awilix";
 
-import { LoginUseCase } from "../application/auth/usecases/LoginUser";
-import { RegisterUseCase } from "../application/auth/usecases/RegisterUser";
-import { BcryptPasswordHasher } from "../infrastructure/auth/BcryptPasswordHasher";
-import { JwtTokenService } from "../infrastructure/auth/JwtTokenService";
-import { UserRepository } from "../infrastructure/prisma/UserRepository";
+import { LoginUseCase } from "@application/auth/usecases/LoginUser";
+import { RegisterUseCase } from "@application/auth/usecases/RegisterUser";
+import { BcryptPasswordHasher } from "@infrastructure/auth/BcryptPasswordHasher";
+import { JwtTokenService } from "@infrastructure/auth/JwtTokenService";
+import { UserRepository } from "@infrastructure/prisma/UserRepository";
 
-import { AuthSession } from "../application/auth/services/AuthSession";
-import { JwtTokenVerifier } from "../infrastructure/auth/JwtTokenVerifier";
-import { NextAuthSessionProvider } from "../infrastructure/services/NextAuthSessionProvider";
+import { AuthSession } from "@application/auth/services/AuthSession";
+import { JwtTokenVerifier } from "@infrastructure/auth/JwtTokenVerifier";
+import { NextAuthSessionProvider } from "@infrastructure/services/NextAuthSessionProvider";
 
 export function registerAuth(container: AwilixContainer) {
   container.register({

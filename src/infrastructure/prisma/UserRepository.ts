@@ -1,8 +1,8 @@
-import { IUserRepository } from "@/src/application/auth/ports/IUserRepository";
-import { User } from "@/src/domain/entities/User";
-import { Email } from "@/src/domain/value-objects/Email";
-import { HashedPassword } from "@/src/domain/value-objects/HashedPassword";
-import { prisma } from "../prismaClient";
+import { IUserRepository } from "@application/auth/ports/IUserRepository";
+import { User } from "@domain/entities/User";
+import { Email } from "@domain/value-objects/Email";
+import { HashedPassword } from "@domain/value-objects/HashedPassword";
+import { prisma } from "@infrastructure/prismaClient";
 
 export class UserRepository implements IUserRepository {
   async findByEmail(email: string): Promise<User | null> {

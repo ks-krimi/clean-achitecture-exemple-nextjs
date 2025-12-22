@@ -1,5 +1,5 @@
-import { Email } from "../value-objects/Email";
-import { HashedPassword } from "../value-objects/HashedPassword";
+import { Email } from "@domain/value-objects/Email";
+import { HashedPassword } from "@domain/value-objects/HashedPassword";
 
 export class User {
   private constructor(

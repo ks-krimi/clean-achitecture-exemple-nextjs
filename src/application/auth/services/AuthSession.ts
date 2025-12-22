@@ -1,5 +1,5 @@
-import { AuthSessionProvider } from "../ports/AuthSessionProvider";
-import { TokenVerifier } from "../ports/TokenVerifier";
+import { AuthSessionProvider } from "@application/auth/ports/AuthSessionProvider";
+import { TokenVerifier } from "@application/auth/ports/TokenVerifier";
 
 export type AuthUser = { id: string; email: string };
 

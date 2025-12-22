@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
-import { TokenService } from "@/src/application/auth/ports/TokenService";
-import { User } from "@/src/domain/entities/User";
+import { TokenService } from "@application/auth/ports/TokenService";
+import { User } from "@domain/entities/User";
 
 export class JwtTokenService implements TokenService {
   generateAccessToken(user: User): string {

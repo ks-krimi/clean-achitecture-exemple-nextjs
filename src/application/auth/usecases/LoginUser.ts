@@ -1,8 +1,8 @@
-import { Email } from "@/src/domain/value-objects/Email";
-import { Password } from "@/src/domain/value-objects/Password";
-import { IUserRepository } from "../ports/IUserRepository";
-import { PasswordHasher } from "../ports/PasswordHasher";
-import { TokenService } from "../ports/TokenService";
+import { IUserRepository } from "@application/auth/ports/IUserRepository";
+import { PasswordHasher } from "@application/auth/ports/PasswordHasher";
+import { TokenService } from "@application/auth/ports/TokenService";
+import { Email } from "@domain/value-objects/Email";
+import { Password } from "@domain/value-objects/Password";
 
 export class LoginUseCase {
   constructor(

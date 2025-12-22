@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import { TokenVerifier } from "@/src/application/auth/ports/TokenVerifier";
+import { TokenVerifier } from "@application/auth/ports/TokenVerifier";
 
 export class JwtTokenVerifier implements TokenVerifier {
   verify<T>(token: string): T {
