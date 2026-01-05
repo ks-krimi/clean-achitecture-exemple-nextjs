@@ -7,7 +7,6 @@ import { JwtTokenService } from "@infrastructure/auth/JwtTokenService";
 import { UserRepository } from "@infrastructure/prisma/UserRepository";
 
 import { AuthSession } from "@application/auth/services/AuthSession";
-import { JwtTokenVerifier } from "@infrastructure/auth/JwtTokenVerifier";
 import { NextAuthSessionProvider } from "@infrastructure/services/NextAuthSessionProvider";
 
 export function registerAuth(container: AwilixContainer) {
@@ -18,7 +17,6 @@ export function registerAuth(container: AwilixContainer) {
     loginUseCase: asClass(LoginUseCase).singleton(),
     registerUseCase: asClass(RegisterUseCase).singleton(),
 
-    tokenVerifier: asClass(JwtTokenVerifier).singleton(),
     authSessionProvider: asClass(NextAuthSessionProvider).scoped(),
     authSession: asClass(AuthSession).scoped(),
   });
