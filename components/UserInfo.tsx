@@ -1,3 +1,4 @@
+import SessionRemaining from "@/components/SessionRemaining";
 import { getUserAction } from "@app/actions/get-user.action";
 
 export default async function UserInfo() {
@@ -11,6 +12,7 @@ export default async function UserInfo() {
       <div className="max-w-3xl mx-auto text-sm text-zinc-700 dark:text-zinc-300">
         Connecté en tant que <strong>{user.email}</strong>
       </div>
+      <SessionRemaining exp={user.exp} />
     </div>
   );
 }
