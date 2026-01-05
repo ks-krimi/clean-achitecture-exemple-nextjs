@@ -1,20 +1,18 @@
 import { AuthSessionProvider } from "@application/auth/ports/AuthSessionProvider";
-import { TokenVerifier } from "@application/auth/ports/TokenVerifier";
-
-export type AuthUser = { id: string; email: string };
+import { ISession, TokenService } from "@application/auth/ports/TokenService";
 
 export class AuthSession {
   constructor(
-    private readonly tokenVerifier: TokenVerifier,
+    private readonly tokenService: TokenService,
     private readonly authSessionProvider: AuthSessionProvider
   ) {}
 
-  async getUser(): Promise<AuthUser | null> {
+  async getSession(): Promise<ISession | null> {
     const token = await this.authSessionProvider.getAccessToken();
     if (!token) return null;
 
     try {
-      return this.tokenVerifier.verify<AuthUser>(token);
+      return this.tokenService.verifyAccessToken(token);
     } catch {
       return null;
     }
