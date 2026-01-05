@@ -14,14 +14,27 @@ export async function loginAction(payload: LoginPayload) {
   const { loginUseCase } = container.cradle;
 
   try {
-    const { accessToken } = await loginUseCase.execute(email, password);
+    const { accessToken, refreshToken } = await loginUseCase.execute(
+      email,
+      password
+    );
 
-    (await cookies()).set("access_token", accessToken, {
+    const c = await cookies();
+
+    c.set(process.env.ACCESS_TOKEN_KEY!, accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       path: "/",
-      maxAge: 60 * 60, // 1h
+      maxAge: Number(process.env.ACCESS_TOKEN_EXPIRES_IN),
+    });
+
+    c.set(process.env.REFRESH_TOKEN_KEY!, refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: Number(process.env.REFRESH_TOKEN_EXPIRES_IN),
     });
 
     return { success: true };
