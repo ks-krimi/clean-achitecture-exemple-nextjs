@@ -14,7 +14,7 @@ export class LoginUseCase {
   async execute(
     emailRaw: string,
     passwordRaw: string
-  ): Promise<{ accessToken: string }> {
+  ): Promise<{ accessToken: string; refreshToken: string }> {
     const email = Email.create(emailRaw);
     const password = Password.create(passwordRaw);
 
@@ -33,8 +33,11 @@ export class LoginUseCase {
       throw new Error("Invalid credentials");
     }
 
-    const accessToken = this.tokenService.generateAccessToken(user);
+    const payload = { email: user.getEmail(), sub: user.id, roles: [] };
 
-    return { accessToken };
+    const accessToken = this.tokenService.generateAccessToken(payload);
+    const refreshToken = this.tokenService.generateRefreshToken(payload);
+
+    return { accessToken, refreshToken };
   }
 }
