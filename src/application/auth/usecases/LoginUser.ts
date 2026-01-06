@@ -1,6 +1,7 @@
 import { IUserRepository } from "@application/auth/ports/IUserRepository";
 import { PasswordHasher } from "@application/auth/ports/PasswordHasher";
 import { TokenService } from "@application/auth/ports/TokenService";
+import { InvalidCredentialsError } from "@domain/errors";
 import { Email } from "@domain/value-objects/Email";
 import { Password } from "@domain/value-objects/Password";
 
@@ -21,7 +22,7 @@ export class LoginUseCase {
     const user = await this.userRepository.findByEmail(email.getValue());
 
     if (!user) {
-      throw new Error("Invalid credentials");
+      throw new InvalidCredentialsError();
     }
 
     const isValid = await this.passwordHasher.compare(
@@ -30,7 +31,7 @@ export class LoginUseCase {
     );
 
     if (!isValid) {
-      throw new Error("Invalid credentials");
+      throw new InvalidCredentialsError();
     }
 
     const payload = { email: user.getEmail(), sub: user.id, roles: [] };
