@@ -1,4 +1,4 @@
-import SessionRemaining from "@/src/ui/auth/SessionRemaining";
+import SessionRemaining from "@ui/auth/SessionRemaining";
 
 type UserInfoProps = { email: string; sessionExp: number };
 
