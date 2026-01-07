@@ -21,7 +21,8 @@
     "paths": {
       "@/*": ["./*"],
       "@app/*": ["./app/*"],
-      "@components/*": ["./components/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@features/*": ["./src/features/*"],
       "@domain/*": ["./src/domain/*"],
       "@application/*": ["./src/application/*"],
       "@infrastructure/*": ["./src/infrastructure/*"]
