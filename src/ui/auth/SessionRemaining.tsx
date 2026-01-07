@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-type Props = { exp: number };
+type SessionRemainingProps = { exp: number };
 
-export default function SessionRemaining({ exp }: Props) {
+export default function SessionRemaining({ exp }: SessionRemainingProps) {
   const [remainingSeconds, setRemainingSeconds] = useState<number>(0);
 
   useEffect(() => {
