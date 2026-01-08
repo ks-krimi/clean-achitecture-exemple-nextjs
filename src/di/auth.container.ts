@@ -4,7 +4,7 @@ import { LoginUseCase } from "@application/auth/usecases/LoginUser";
 import { RegisterUseCase } from "@application/auth/usecases/RegisterUser";
 import { BcryptPasswordHasher } from "@infrastructure/auth/BcryptPasswordHasher";
 import { JwtTokenService } from "@infrastructure/auth/JwtTokenService";
-import { UserRepository } from "@infrastructure/prisma/UserRepository";
+import { UserRepository } from "@/src/infrastructure/repositories/UserRepository";
 
 import { AuthSession } from "@application/auth/services/AuthSession";
 import { NextAuthSessionProvider } from "@infrastructure/services/NextAuthSessionProvider";
