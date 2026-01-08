@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { AuthService } from "@features/auth/services";
-import UserInfo from "@ui/auth/UserInfo";
+import SessionInfo from "@ui/auth/SessionInfo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +34,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {user && <UserInfo email={user.email} sessionExp={user.exp} />}
+        {user && <SessionInfo email={user.email} sessionExp={user.exp} />}
         {children}
       </body>
     </html>
