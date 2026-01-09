@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 
 import { RegisterPayload } from "@features/auth/types";
 import { RegisterFormInput, registerSchema } from "@ui/auth/register";
+import { Button } from "@ui/shared/atoms/Button";
+import { ControlledInput } from "@ui/shared/molecules/ControlledInput";
 
 type RegisterFormProps = {
   onSubmit: (payload: RegisterPayload) => void;
@@ -12,9 +14,9 @@ type RegisterFormProps = {
 
 export function RegisterForm({ onSubmit, error }: RegisterFormProps) {
   const {
-    register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    control,
+    formState: { isSubmitting },
   } = useForm<RegisterFormInput>({
     resolver: zodResolver(registerSchema),
   });
@@ -24,35 +26,25 @@ export function RegisterForm({ onSubmit, error }: RegisterFormProps) {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col w-full gap-4"
     >
-      <label className="flex flex-col">
-        <span className="font-medium">Email</span>
-        <input {...register("email")} type="email" />
-        {errors.email && (
-          <span className="text-red-500 text-sm">{errors.email.message}</span>
-        )}
-      </label>
+      <ControlledInput
+        label="Email"
+        type="email"
+        name="email"
+        control={control}
+      />
 
-      <label className="flex flex-col">
-        <span className="font-medium">Password</span>
-        <input {...register("password")} type="password" />
-        {errors.password && (
-          <span className="text-red-500 text-sm">
-            {errors.password.message}
-          </span>
-        )}
-      </label>
+      <ControlledInput
+        label="Password"
+        type="password"
+        name="password"
+        control={control}
+      />
 
       {error && <span className="text-red-500 text-sm">{error}</span>}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="mt-2 rounded-full border border-transparent 
-                       bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] 
-                       transition-colors text-sm sm:text-base h-10 px-4"
-      >
+      <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Creating..." : "Create account"}
-      </button>
+      </Button>
     </form>
   );
 }
