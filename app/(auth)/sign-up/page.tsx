@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { useRegister } from "@/src/features/auth/hooks";
@@ -28,9 +29,9 @@ export default function SignUpPage() {
 
         <div className="text-sm">
           Already have an account?{" "}
-          <a href="/sign-in" className="underline hover:no-underline">
+          <Link href="/sign-in" className="underline hover:no-underline">
             Sign in
-          </a>
+          </Link>
         </div>
       </main>
     </div>

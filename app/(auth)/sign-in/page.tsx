@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { useLogin } from "@features/auth/hooks";
@@ -28,9 +29,9 @@ export default function SignInPage() {
 
         <div className="text-sm">
           Don’t have an account?{" "}
-          <a href="/sign-up" className="underline hover:no-underline">
+          <Link href="/sign-up" className="underline hover:no-underline">
             Sign up
-          </a>
+          </Link>
         </div>
       </main>
     </div>
