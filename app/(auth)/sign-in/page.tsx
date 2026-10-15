@@ -21,14 +21,12 @@ export default function SignInPage() {
   return (
     <div className="grid min-h-screen place-items-center p-8 sm:p-20">
       <main className="flex flex-col gap-6 items-center w-full max-w-sm">
-        <h1 className="text-2xl sm:text-4xl font-semibold">
-          Login to Wifi Ticket
-        </h1>
+        <h1 className="text-2xl sm:text-4xl font-semibold">Login to us</h1>
 
         <LoginForm onSubmit={onSubmit} error={error} loading={loading} />
 
         <div className="text-sm">
-          Don’t have an account?{" "}
+          Don’t have an account?&nbsp;
           <Link href="/sign-up" className="underline hover:no-underline">
             Sign up
           </Link>

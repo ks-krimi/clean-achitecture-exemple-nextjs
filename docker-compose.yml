@@ -1,7 +1,7 @@
 services:
   database:
     image: postgres:14
-    container_name: hanepe-rapiera-database
+    container_name: postgres
     volumes:
       - ./data/postgres:/var/lib/postgresql/data:rw
     ports:
@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
     networks:
-      - hanepe-rapiera-network
+      - clean-architecture-network
 networks:
-  hanepe-rapiera-network:
+  clean-architecture-network:
     driver: bridge
